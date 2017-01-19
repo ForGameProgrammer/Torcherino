@@ -15,8 +15,8 @@ import net.minecraftforge.fluids.BlockFluidBase;
 import java.util.Random;
 
 public class TileTorcherino extends TileEntity implements ITickable {
-    private static final String[] MODES = new String[]{"Stopped", "Radius: +1, Area: 3x3x3", "Radius: +2, Area: 5x3x5", "Radius: +3, Area: 7x3x7", "Radius: +4, Area: 9x3x9"};
-    private static final int SPEEDS = 4;
+    private static final String[] MODES = new String[]{"Stopped", "Radius: +1, Area: 3x3x3", "Radius: +2, Area: 5x5x5", "Radius: +3, Area: 7x7x7", "Radius: +4, Area: 9x9x9", "Radius: +5", "Radius: +6, Area: 11x11x11", "Radius: +7, Area: 13x13x13", "Radius: +8, Area: 15x15x15"};
+    private static final int SPEEDS = 16;
 
     private boolean poweredByRedstone;
     private byte speed;
@@ -55,10 +55,10 @@ public class TileTorcherino extends TileEntity implements ITickable {
     private void updateCachedModeIfNeeded() {
         if (this.cachedMode != this.mode) {
             this.xMin = this.pos.getX() - this.mode;
-            this.yMin = this.pos.getY() - 1;
+            this.yMin = this.pos.getY() - this.mode;
             this.zMin = this.pos.getZ() - this.mode;
             this.xMax = this.pos.getX() + this.mode;
-            this.yMax = this.pos.getY() + 1;
+            this.yMax = this.pos.getY() + this.mode;
             this.zMax = this.pos.getZ() + this.mode;
             this.cachedMode = this.mode;
         }
